@@ -20,6 +20,9 @@ import {
   ArrowRight,
   CheckCircle2,
   Lightbulb,
+  Sparkles,
+  AlertTriangle,
+  Shield,
 } from "lucide-react";
 
 const steps = [
@@ -109,6 +112,58 @@ export function HelpButton() {
           </DialogHeader>
 
           <div className="overflow-y-auto flex-1 -mx-6 px-6 space-y-4 py-4">
+            {/* Why Brand Books Matter */}
+            <div className="rounded-lg bg-gradient-to-br from-blue-50 to-slate-50 dark:from-blue-950/40 dark:to-slate-950/40 border border-blue-200 dark:border-blue-800 p-5 space-y-4">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-blue-500" />
+                <h3 className="font-semibold text-lg text-blue-900 dark:text-blue-100">
+                  Why Your Brand Book Is Everything
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Businesses with consistent branding across all channels see up to <strong className="text-foreground">23% more revenue</strong> than those without it. A brand book isn&apos;t a nice-to-have — it&apos;s the single document that keeps your entire team, your marketing, and your customer experience aligned.
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Think of it as <strong className="text-foreground">your business&apos;s DNA on paper</strong> — who you are, what you stand for, how you sound, and how you look. It&apos;s the difference between a brand people recognize and trust, and one they forget.
+              </p>
+            </div>
+
+            {/* Relatable Example */}
+            <div className="rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-950/20 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="h-5 w-5 text-amber-500" />
+                <h3 className="font-semibold text-amber-900 dark:text-amber-100">
+                  Sound Familiar?
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed italic">
+                &ldquo;Your front desk greets customers with &apos;Hey, what&apos;s up!&apos; while your website sounds like a Fortune 500 press release. Your social media uses bright orange, but your invoices are forest green. A new hire asks &apos;What do we actually stand for?&apos; and three employees give three different answers.&rdquo;
+              </p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Without a brand book, every person on your team is guessing. With one, <strong className="text-foreground">everyone speaks the same language</strong> — from your receptionist to your social media manager to the AI tools you deploy.
+              </p>
+            </div>
+
+            {/* What This Tool Does */}
+            <div className="rounded-lg border border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-950/20 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5 text-green-500" />
+                <h3 className="font-semibold text-green-900 dark:text-green-100">
+                  What This Tool Does
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                The Brand Book Creator walks you through <strong className="text-foreground">6 sections</strong> that capture every piece of your brand identity — from your core purpose to your exact hex colors. When you&apos;re done, you&apos;ll have a living brand guide that syncs directly into your Go High Level account and powers every other Master&apos;s Edge tool.
+              </p>
+            </div>
+
+            {/* Section Divider */}
+            <div className="flex items-center gap-3 pt-2">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">The 6 Steps</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+
             {steps.map((step, index) => (
               <div
                 key={index}
