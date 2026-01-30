@@ -38,10 +38,10 @@ export function Sidebar() {
     <div className="flex h-full w-64 flex-col fixed inset-y-0 z-50 bg-card border-r">
       {/* Logo */}
       <div className="flex h-16 shrink-0 items-center gap-2 px-6 border-b">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center">
+        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-900 to-blue-700 flex items-center justify-center">
           <BookOpen className="w-5 h-5 text-white" />
         </div>
-        <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
+        <span className="text-xl font-bold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
           Brand Book
         </span>
       </div>
@@ -100,14 +100,14 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="border-t p-4">
-        <div className="rounded-lg bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/50 dark:to-purple-950/50 p-4">
-          <p className="text-sm font-medium text-violet-900 dark:text-violet-100">
+        <div className="rounded-lg bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-950/30 p-4">
+          <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
             Part of
           </p>
-          <p className="mt-1 text-xs font-medium text-violet-600 dark:text-violet-400">
+          <p className="mt-1 text-xs font-medium text-blue-700 dark:text-blue-400">
             The Master&apos;s Edge Program
           </p>
-          <p className="mt-0.5 text-xs text-violet-500 dark:text-violet-500">
+          <p className="mt-0.5 text-xs text-blue-600 dark:text-blue-500">
             by Total Success AI
           </p>
         </div>

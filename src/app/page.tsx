@@ -47,7 +47,7 @@ const brandSections = [
     description: "How your brand sounds and feels",
     icon: Mic2,
     href: "/voice",
-    completed: false,
+    completed: true,
     items: ["Brand Voice", "Tone Shifts", "Copy Style", "Brand Personality", "Archetype"],
   },
   {
@@ -56,7 +56,7 @@ const brandSections = [
     description: "Colors, typography, logo, imagery",
     icon: Palette,
     href: "/visual",
-    completed: false,
+    completed: true,
     items: ["Primary Colors", "Secondary Palette", "Typography", "Logo Guidelines", "Image Style"],
   },
   {
@@ -65,7 +65,7 @@ const brandSections = [
     description: "Who you serve and what you say",
     icon: Users,
     href: "/audience",
-    completed: false,
+    completed: true,
     items: ["Target Personas", "Elevator Pitches", "Key Messages", "Proof Points"],
   },
   {
@@ -74,7 +74,7 @@ const brandSections = [
     description: "Hashtags, keywords, guidelines",
     icon: Hash,
     href: "/assets",
-    completed: false,
+    completed: true,
     items: ["Hashtags", "Keywords", "Trademark Rules", "Usage Guidelines"],
   },
 ];
@@ -112,20 +112,32 @@ const stats = [
 
 const recentActivity = [
   {
-    action: "Brand Foundation completed",
-    detail: "Name, tagline, purpose, vision, and mission defined",
+    action: "All sections completed",
+    detail: "Complete TSAI brand identity populated across all 6 sections",
+    time: "Just now",
+    type: "complete",
+  },
+  {
+    action: "Brand Assets finalized",
+    detail: "Hashtags, keywords, trademark rules, and boilerplate copy added",
+    time: "1 hour ago",
+    type: "complete",
+  },
+  {
+    action: "Visual Identity defined",
+    detail: "Navy color palette, Inter typography, and logo guidelines set",
     time: "2 hours ago",
     type: "complete",
   },
   {
-    action: "Core Values added",
-    detail: "5 values with descriptions saved",
+    action: "Voice & Audience established",
+    detail: "People-first voice, 4 target personas, and 5 message pillars defined",
     time: "3 hours ago",
     type: "complete",
   },
   {
     action: "Brand Book created",
-    detail: "Started building your brand identity",
+    detail: "Total Success AI brand identity project initiated",
     time: "1 day ago",
     type: "start",
   },
@@ -187,12 +199,12 @@ export default function DashboardPage() {
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
                         section.completed
                           ? "bg-green-100 dark:bg-green-900/30"
-                          : "bg-violet-100 dark:bg-violet-900/30"
+                          : "bg-blue-100 dark:bg-blue-900/30"
                       }`}>
                         <section.icon className={`h-5 w-5 ${
                           section.completed
                             ? "text-green-600 dark:text-green-400"
-                            : "text-violet-600 dark:text-violet-400"
+                            : "text-blue-600 dark:text-blue-400"
                         }`} />
                       </div>
                       <div>
@@ -243,7 +255,7 @@ export default function DashboardPage() {
               {recentActivity.map((activity, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className={`w-2 h-2 rounded-full mt-2 ${
-                    activity.type === "complete" ? "bg-green-500" : "bg-violet-500"
+                    activity.type === "complete" ? "bg-green-500" : "bg-blue-500"
                   }`} />
                   <div className="flex-1">
                     <p className="text-sm font-medium">{activity.action}</p>

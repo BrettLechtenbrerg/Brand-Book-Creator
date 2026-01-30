@@ -31,39 +31,51 @@ export default function ValuesPage() {
   const [values, setValues] = useState<BrandValue[]>([
     {
       id: 1,
-      name: "Quality Over Speed",
-      description: "We never ship something we're not proud of. Every product, every interaction, every system meets our standard.",
-      inAction: "We'd rather delay a launch than deliver something half-baked. Our clients deserve our best work.",
+      name: "People First",
+      description: "Humans are at the center of every decision we make. Technology exists to serve people, not the other way around.",
+      inAction: "Every AI solution starts with understanding the humans who will use it. We never implement technology that doesn't empower the people it touches.",
     },
     {
       id: 2,
-      name: "Radical Transparency",
-      description: "We share the why behind every decision. No hidden agendas, no corporate speak.",
-      inAction: "If something goes wrong, we tell clients immediately and explain how we're fixing it.",
+      name: "Empowerment Over Dependence",
+      description: "We teach people to fish, not just catch fish for them. Our goal is confident, capable teams — not perpetual clients.",
+      inAction: "Every engagement includes hands-on training until team members are confident using AI tools independently. We measure success by their self-sufficiency.",
     },
     {
       id: 3,
-      name: "Automate the Grind",
-      description: "If a computer can do it, a human shouldn't have to. We relentlessly eliminate busywork.",
-      inAction: "Every process gets evaluated: Can this be automated? If yes, it should be.",
+      name: "Partnership Not Just Service",
+      description: "We're true collaborators, not vendors. We stay engaged until goals are met — no implement-and-disappear.",
+      inAction: "We don't hand off a deliverable and walk away. We work alongside teams through implementation, training, and optimization until success is achieved.",
     },
     {
       id: 4,
-      name: "Elevate the Human",
-      description: "Technology serves people, not the other way around. We free humans to do what only humans can.",
-      inAction: "Our tools handle the data crunching so owners can focus on relationships and strategy.",
+      name: "Practical Over Theoretical",
+      description: "Real-world, actionable solutions beat academic frameworks every time. If it doesn't work in practice, it doesn't work.",
+      inAction: "Every tool and system is designed for real businesses with real constraints. No ivory tower strategies — just practical solutions that produce measurable results.",
     },
     {
       id: 5,
-      name: "Continuous Growth",
-      description: "We're students first, experts second. The moment we stop learning, we stop leading.",
-      inAction: "Monthly team learning sessions, open feedback culture, and celebrating mistakes as lessons.",
+      name: "Continuous Learning",
+      description: "Growth mindset for all. The AI landscape evolves daily, and so do we. We're students first, experts second.",
+      inAction: "Regular team learning sessions, staying current with AI developments, and openly sharing knowledge with our community and clients.",
+    },
+    {
+      id: 6,
+      name: "Community",
+      description: "Building connections and ecosystems matters. Success is better when shared, and collaboration beats isolation.",
+      inAction: "We actively build communities around our programs, connect clients with each other, and contribute to the broader conversation about responsible AI adoption.",
+    },
+    {
+      id: 7,
+      name: "Integrity & Transparency",
+      description: "Honest guidance, always. We tell clients what they need to hear, not just what they want to hear.",
+      inAction: "If AI isn't the right solution, we say so. We share our reasoning openly, admit when we're wrong, and never oversell capabilities.",
     },
   ]);
 
   const [story, setStory] = useState({
-    short: "Total Success AI was born when two business owners realized they were spending more time fighting their software than running their businesses. Brett and Manny combined their expertise in AI and business operations to build tools that actually work — automation that handles the grind so entrepreneurs can focus on what matters.",
-    full: "It started with frustration. Brett Lechtenberg was drowning in admin work — scheduling, follow-ups, reporting — the endless cycle that keeps business owners busy but not productive. When he met Manny Torres, they discovered they shared the same vision: what if AI could handle all the repetitive work that steals entrepreneurs' time?\n\nThey started building. Not generic tools that sort of work, but purpose-built systems for real business problems. The kind of tools they wished existed when they were scaling their own businesses. Every prompt, every workflow, every dashboard was designed with one question: 'Will this actually save a business owner time and make them money?'\n\nThe Master's Edge Business Program became their answer — a complete system of AI-powered tools that turns chaos into clarity. From hiring decisions to brand strategy to competitor intelligence, each tool automates the grind and elevates the human.\n\nToday, Total Success AI serves business owners who refuse to accept that 'busy' means 'productive.' Because the most successful people aren't the ones who work the hardest — they're the ones who work the smartest.",
+    short: "Total Success AI was founded by Brett Lechtenberg and Manny Torres who saw a gap in the AI consulting space — everyone was focused on technology, but nobody was putting people first. They built TSAI on a simple belief: when AI serves people, not the other way around, everyone wins. Today, TSAI partners with businesses to implement AI solutions that empower individuals, strengthen teams, and drive lasting success.",
+    full: "It started with a question that wouldn't go away: Why does adopting AI have to feel threatening?\n\nBrett Lechtenberg and Manny Torres saw it everywhere — businesses rushing to implement AI, employees worried about being replaced, leaders overwhelmed by promises of 'disruption' and 'revolution.' The AI industry was moving fast, but it was leaving people behind.\n\nThey knew there had to be a better way. Not AI that replaces humans, but AI that empowers them. Not consultants who implement and disappear, but partners who stay until every team member is confident and every system is thriving.\n\nThat conviction became Total Success AI.\n\nFrom day one, TSAI was built on a different philosophy: People First. Every tool, every training, every consultation starts with the humans who will use it. Because the most powerful AI in the world is worthless if the people it's meant to serve don't trust it, understand it, or feel empowered by it.\n\nThe approach works at three levels. First, individuals gain confidence — they go from fearing AI to wielding it. Then teams align — collaboration improves, communication sharpens, and silos break down. Finally, the business transforms — not through disruption, but through sustainable, people-centered growth.\n\nThrough The Master's Edge Business Program, TSAI delivers 15 integrated systems that cover everything from brand identity to hiring, from SOPs to competitive intelligence. Each system is practical, actionable, and designed for real businesses with real constraints.\n\nToday, Total Success AI serves small business owners, chamber members, team leaders, and solopreneurs who believe technology should work for people — not the other way around. Because when you put people at the center, success isn't just possible. It's inevitable.",
   });
 
   const handleSave = () => {

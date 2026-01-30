@@ -22,12 +22,12 @@ import {
 export default function FoundationPage() {
   const [saved, setSaved] = useState(false);
   const [foundation, setFoundation] = useState({
-    businessName: "Total Success AI",
-    tagline: "Automate the grind. Elevate the human.",
-    purpose: "To free business owners from repetitive tasks so they can focus on what matters most — growing their business and living their life.",
-    vision: "A world where every small business owner has enterprise-level AI tools at their fingertips, making informed decisions in seconds, not days.",
-    mission: "We build intelligent automation systems that handle the busy work, so entrepreneurs can focus on strategy, relationships, and growth.",
-    positioning: "For ambitious small business owners who are tired of drowning in admin work, Total Success AI provides AI-powered automation systems that transform operations from chaotic to streamlined — unlike generic tools, our systems are built specifically for Go High Level and integrate seamlessly with your existing workflow.",
+    businessName: "Total Success AI (TSAI)",
+    tagline: "People-Centered AI Solutions for the Real World",
+    purpose: "To prove that AI and humanity aren't at odds—that when technology serves people first, everyone wins.",
+    vision: "A future where AI makes work more human, not less.",
+    mission: "We partner with businesses to embrace AI through strategic consulting, hands-on implementation, and practical training—working until every individual is confident, every team is elevated, and the business thrives.",
+    positioning: "Unlike AI consultants who focus solely on efficiency and automation, Total Success AI puts people at the center—ensuring technology empowers individuals, strengthens teams, and creates lasting business success.",
   });
 
   const handleSave = () => {
@@ -93,7 +93,7 @@ export default function FoundationPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-600 flex items-center justify-center">
                 <Building2 className="w-5 h-5 text-white" />
               </div>
               Brand Foundation
@@ -126,7 +126,7 @@ export default function FoundationPage() {
             <Card key={field.key}>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <field.icon className="h-5 w-5 text-violet-500" />
+                  <field.icon className="h-5 w-5 text-blue-500" />
                   {field.label}
                 </CardTitle>
               </CardHeader>
@@ -161,33 +161,33 @@ export default function FoundationPage() {
         </div>
 
         {/* Preview Card */}
-        <Card className="border-violet-200 dark:border-violet-800">
+        <Card className="border-blue-200 dark:border-blue-800">
           <CardHeader>
             <CardTitle className="text-lg">Preview: Brand Foundation Summary</CardTitle>
             <CardDescription>How your foundation looks when complete</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="rounded-lg bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30 p-6 space-y-4">
+            <div className="rounded-lg bg-gradient-to-br from-blue-50 to-blue-50 dark:from-blue-950/30 dark:to-blue-950/30 p-6 space-y-4">
               <h2 className="text-2xl font-bold">{foundation.businessName || "Your Brand Name"}</h2>
-              <p className="text-lg italic text-violet-700 dark:text-violet-300">
+              <p className="text-lg italic text-blue-700 dark:text-blue-300">
                 &ldquo;{foundation.tagline || "Your tagline here"}&rdquo;
               </p>
               <Separator />
               <div className="grid gap-4 md:grid-cols-2">
                 <div>
-                  <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider">Purpose</p>
+                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wider">Purpose</p>
                   <p className="text-sm mt-1">{foundation.purpose || "—"}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider">Vision</p>
+                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wider">Vision</p>
                   <p className="text-sm mt-1">{foundation.vision || "—"}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider">Mission</p>
+                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wider">Mission</p>
                   <p className="text-sm mt-1">{foundation.mission || "—"}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-violet-500 uppercase tracking-wider">Positioning</p>
+                  <p className="text-xs font-semibold text-blue-500 uppercase tracking-wider">Positioning</p>
                   <p className="text-sm mt-1">{foundation.positioning || "—"}</p>
                 </div>
               </div>

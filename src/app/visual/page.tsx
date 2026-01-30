@@ -33,35 +33,39 @@ export default function VisualPage() {
   const [copied, setCopied] = useState<string | null>(null);
 
   const [primaryColors, setPrimaryColors] = useState<ColorSwatch[]>([
-    { id: 1, name: "Brand Violet", hex: "#8B5CF6", usage: "Primary buttons, headings, CTAs" },
-    { id: 2, name: "Brand Purple", hex: "#7C3AED", usage: "Hover states, accents, gradients" },
-    { id: 3, name: "Dark Navy", hex: "#1E1B4B", usage: "Body text, dark backgrounds" },
+    { id: 1, name: "Navy", hex: "#1a365d", usage: "Primary brand color, headings, buttons, key UI elements" },
+    { id: 2, name: "Navy Light", hex: "#2c5282", usage: "Hover states, links, secondary buttons, gradients" },
+    { id: 3, name: "Silver", hex: "#a0aec0", usage: "Body text accents, icons, secondary elements" },
+    { id: 4, name: "White", hex: "#ffffff", usage: "Backgrounds, cards, light text on dark backgrounds" },
   ]);
 
   const [secondaryColors, setSecondaryColors] = useState<ColorSwatch[]>([
-    { id: 4, name: "Success Green", hex: "#22C55E", usage: "Confirmations, positive states" },
-    { id: 5, name: "Warning Amber", hex: "#F59E0B", usage: "Alerts, tips, highlights" },
-    { id: 6, name: "Light Gray", hex: "#F1F5F9", usage: "Backgrounds, cards, borders" },
+    { id: 5, name: "Silver Light", hex: "#e2e8f0", usage: "Backgrounds, cards, dividers, subtle borders" },
+    { id: 6, name: "Slate", hex: "#334155", usage: "Body text, dark UI elements, footers" },
+    { id: 7, name: "Warm Gray", hex: "#78716c", usage: "Subtle text, captions, supporting elements" },
+    { id: 8, name: "Light Blue", hex: "#3b82f6", usage: "Info states, links, interactive highlights" },
+    { id: 9, name: "Success Green", hex: "#22c55e", usage: "Success states, confirmations, positive indicators" },
+    { id: 10, name: "Soft Navy", hex: "#1e3a5f", usage: "Dark backgrounds, overlays, depth elements" },
   ]);
 
   const [typography, setTypography] = useState({
     primary: "Inter",
     secondary: "System UI",
-    headingWeight: "700 (Bold)",
-    bodyWeight: "400 (Regular)",
-    headingSize: "2rem / 32px for H1, scaling down by 0.25rem per level",
-    bodySize: "1rem / 16px base, 0.875rem / 14px for small text",
+    headingWeight: "600 (Semi-Bold) — 700 (Bold) for Hero headings",
+    bodyWeight: "400 (Regular) — 500 (Medium) for emphasis",
+    headingSize: "Hero: 48-64px, Section: 36-48px, H1: 32-36px, H2: 24-28px, H3: 20-24px, H4: 18-20px",
+    bodySize: "Body: 16-18px, Small: 14px, Caption: 12px",
   });
 
   const [logoGuidelines, setLogoGuidelines] = useState({
-    clearSpace: "Minimum clear space equal to the height of the logomark on all sides",
-    minSize: "Minimum 120px wide for digital, 1 inch for print",
-    backgrounds: "Logo works on white, dark navy, and gradient violet backgrounds. Never place on busy images without overlay.",
-    donts: "Never stretch, rotate, add effects, change colors outside brand palette, or place on low-contrast backgrounds.",
+    clearSpace: "Minimum clear space equal to the height of the logomark on all sides. Ensure the logo breathes in all applications.",
+    minSize: "Minimum 120px wide for digital, 1 inch for print. Below this size, use the icon mark only.",
+    backgrounds: "Logo works on white, navy (#1a365d), and light gray (#e2e8f0) backgrounds. May use transparent overlays on photography. Never place on busy or low-contrast backgrounds.",
+    donts: "Never stretch, rotate, add drop shadows, change colors outside brand palette, place on clashing backgrounds, or modify the letterforms.",
   });
 
   const [imageStyle, setImageStyle] = useState(
-    "Clean, modern, professional photography. Bright and well-lit. Real people over stock photos where possible. Technology shots should feel approachable, not intimidating. Avoid overly corporate or staged imagery."
+    "Clean, professional, and approachable. Focus on real people in real business settings — workshops, meetings, team collaborations. Warm lighting, natural environments. Show diversity and inclusion. Avoid overly corporate, staged, or stock-looking imagery. Technology should feel empowering and accessible, never intimidating. Prefer candid moments over posed shots. Color grading should align with brand palette — warm tones with navy accents."
   );
 
   const handleSave = () => {
@@ -199,7 +203,7 @@ export default function VisualPage() {
             </Card>
 
             {/* Color Preview */}
-            <Card className="border-violet-200 dark:border-violet-800">
+            <Card className="border-blue-200 dark:border-blue-800">
               <CardHeader>
                 <CardTitle className="text-lg">Color Palette Preview</CardTitle>
               </CardHeader>

@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 
 const archetypes = [
+  { name: "The Sage + The Ally", desc: "Wisdom and partnership — expert guidance with genuine care and collaboration", examples: "Total Success AI — combining deep expertise with true people-first partnership" },
   { name: "The Sage", desc: "Wisdom, expertise, thought leadership", examples: "Google, BBC, Harvard" },
   { name: "The Hero", desc: "Courage, determination, mastery", examples: "Nike, FedEx, US Army" },
   { name: "The Creator", desc: "Innovation, imagination, self-expression", examples: "Apple, Adobe, Lego" },
@@ -35,25 +36,27 @@ const archetypes = [
 
 export default function VoicePage() {
   const [saved, setSaved] = useState(false);
-  const [selectedArchetype, setSelectedArchetype] = useState("The Sage");
-  const [voiceAdjectives, setVoiceAdjectives] = useState(["Confident", "Approachable", "Direct", "Witty", "Expert"]);
+  const [selectedArchetype, setSelectedArchetype] = useState("The Sage + The Ally");
+  const [voiceAdjectives, setVoiceAdjectives] = useState(["Warm", "Confident", "Encouraging", "Clear", "Grounded", "Empowering"]);
   const [newAdjective, setNewAdjective] = useState("");
-  const [neverWords, setNeverWords] = useState(["Synergy", "Pivot", "Disrupt", "Leverage", "Circle back"]);
+  const [neverWords, setNeverWords] = useState(["Revolutionary", "Game-changing", "Disruptive", "Cutting-edge", "Left behind", "Obsolete", "Replaced", "Leverage", "Synergy", "Optimize", "Stakeholders", "Utilize", "Simply", "Just", "Obviously"]);
   const [newNeverWord, setNewNeverWord] = useState("");
 
   const [toneShifts, setToneShifts] = useState({
-    social: "Casual and energetic. Short sentences. Occasional humor. Always end with a question or CTA.",
-    email: "Professional but warm. Clear subject lines. Get to the point fast. Sign off personally.",
-    sales: "Confident, not pushy. Lead with transformation. Use client success stories. Address objections head-on.",
-    crisis: "Calm and transparent. Own the mistake immediately. Explain the fix. Follow up with action.",
-    support: "Patient and empathetic. No jargon. Step-by-step guidance. Always confirm understanding.",
+    socialMedia: "Warm and conversational. Short sentences. Lead with value, not sales. Use encouraging language. End with questions to spark engagement. Emoji use: moderate and purposeful.",
+    websiteCopy: "Confident and clear. Lead with transformation, not features. Use the people-first framework. Headlines should inspire, body copy should inform. Every page should have a clear CTA.",
+    training: "Patient, encouraging, step-by-step. Meet people where they are. Celebrate small wins. Use real examples. Avoid jargon. Make AI feel approachable and exciting, not intimidating.",
+    consulting: "Professional yet warm. Listen first, advise second. Use data to support recommendations. Frame solutions around their specific situation. Always tie back to people-first principles.",
+    email: "Professional but personal. Clear subject lines under 50 characters. Get to the value fast. One CTA per email. Sign off warmly. Footer includes boilerplate.",
+    technical: "Clear, precise, and thorough. Use plain language where possible. Include step-by-step instructions. Add context for WHY, not just HOW. Make documentation accessible to non-technical users.",
+    crisis: "Calm, transparent, and empathetic. Acknowledge the concern immediately. Explain what happened and what we are doing about it. Follow up with concrete next steps. Never minimize or deflect.",
   });
 
   const [copyRules, setCopyRules] = useState({
-    transformation: "Lead with WHO they become, not WHAT the product does.",
-    headlines: "Use numbers, action verbs, and specific outcomes. 'Save 10 Hours a Week' > 'Increase Efficiency'",
-    cta: "Use first-person: 'Start My Free Trial' not 'Start Your Free Trial'. Make the action clear.",
-    forbidden: "No buzzwords, no corporate speak, no passive voice. Write like you talk.",
+    transformation: "Lead with WHO they become, not WHAT the product does. Use the Transformation Hierarchy: Transformation > Outcome > Benefit > Feature.",
+    headlines: "Focus on empowerment and possibility. Use clear, encouraging language. 'Empower Your Team with AI' > 'AI Automation Tools'. Always people-first framing.",
+    cta: "Use empowering, action-oriented language: 'Start Your Journey' > 'Buy Now'. Frame CTAs as the beginning of partnership, not a transaction.",
+    forbidden: "Never use: revolutionary, game-changing, disruptive, cutting-edge, left behind, obsolete, replaced, leverage, synergy, optimize, stakeholders, utilize. No fear-based messaging. No passive voice.",
   });
 
   const handleSave = () => {
@@ -192,7 +195,7 @@ export default function VoicePage() {
               <CardContent className="space-y-6">
                 {Object.entries(toneShifts).map(([key, value]) => (
                   <div key={key} className="space-y-2">
-                    <label className="text-sm font-medium capitalize">{key === "cta" ? "Calls to Action" : key} Tone</label>
+                    <label className="text-sm font-medium capitalize">{key.replace(/([A-Z])/g, " $1")} Tone</label>
                     <Textarea
                       value={value}
                       onChange={(e) => setToneShifts({ ...toneShifts, [key]: e.target.value })}
@@ -230,9 +233,9 @@ export default function VoicePage() {
                   </div>
                 ))}
 
-                <div className="flex items-start gap-2 rounded-md bg-violet-50 dark:bg-violet-950/30 p-4">
-                  <Lightbulb className="h-4 w-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div className="text-xs text-violet-800 dark:text-violet-200 space-y-1">
+                <div className="flex items-start gap-2 rounded-md bg-blue-50 dark:bg-blue-950/30 p-4">
+                  <Lightbulb className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <div className="text-xs text-blue-800 dark:text-blue-200 space-y-1">
                     <p className="font-semibold">The Transformation Hierarchy:</p>
                     <p>1. Transformation (highest) — Who they BECOME</p>
                     <p>2. Outcome — The result they achieve</p>

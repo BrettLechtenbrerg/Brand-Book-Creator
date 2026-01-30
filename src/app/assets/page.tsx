@@ -27,34 +27,34 @@ export default function AssetsPage() {
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
   const [hashtags, setHashtags] = useState({
-    branded: ["#TotalSuccessAI", "#MastersEdge", "#AutomateTheGrind", "#ElevateTheHuman"],
-    values: ["#WorkSmarter", "#BusinessAutomation", "#AIForBusiness"],
-    service: ["#GoHighLevel", "#GHLAutomation", "#CRMAutomation"],
-    industry: ["#SmallBusiness", "#Entrepreneur", "#BusinessGrowth"],
-    campaign: ["#BuildSystems", "#ScaleWithAI"],
+    branded: ["#TotalSuccessAI", "#TSAI", "#PeopleFirstAI", "#PeopleCenteredAI"],
+    mission: ["#AIForHumans", "#HumanCenteredAI", "#AIWithHeart", "#PeopleOverTech", "#EmpowerNotReplace"],
+    service: ["#AIConsulting", "#AIImplementation", "#AITraining", "#BusinessAI", "#SmartBusiness"],
+    industry: ["#SmallBusiness", "#BusinessGrowth", "#FutureOfWork", "#AIForBusiness"],
+    campaign: ["#ThreeLevelsOfSuccess", "#MastersEdge", "#PeopleCenteredAI"],
   });
   const [newHashtag, setNewHashtag] = useState({ category: "branded", value: "" });
 
   const [keywords, setKeywords] = useState({
-    primary: ["business automation", "AI for small business", "Go High Level automation"],
-    service: ["CRM automation", "sales automation", "marketing automation", "business systems"],
-    audience: ["small business owner", "entrepreneur automation", "agency owner tools"],
-    longTail: ["how to automate my small business", "best Go High Level tools", "AI business automation system"],
-    negative: ["free", "cheap", "DIY", "no-code simple"],
+    primary: ["people-centered AI", "AI consulting", "AI implementation", "business AI solutions", "people-first AI"],
+    service: ["AI training", "AI strategy consulting", "business AI implementation", "team AI empowerment", "AI for small business"],
+    audience: ["small business AI", "chamber of commerce AI", "team leader AI tools", "solopreneur AI solutions"],
+    longTail: ["how to implement AI without replacing employees", "people-centered AI consulting for small business", "AI that empowers teams not replaces them"],
+    negative: ["free AI tools", "AI job replacement", "cheap AI", "automated replacement", "no-human AI"],
   });
 
   const [trademark, setTrademark] = useState({
-    spelling: "Total Success AI (always capitalize both words and AI). Never: total success ai, TotalSuccessAI, TSAI (unless in code/internal).",
-    logo: "Logo must always appear in brand violet (#8B5CF6) or white. Never alter the logo proportions or add effects.",
-    tagline: "\"Automate the grind. Elevate the human.\" Always in that exact format with period after each sentence. Both sentences required.",
+    spelling: "Total Success AI — always spelled out, with 'AI' in capitals. Abbreviation 'TSAI' acceptable in internal communications and code. Never: totalsuccess ai, total success Ai, TotalSuccessAi.",
+    logo: "Logo appears in Navy (#1a365d) or White. Maintain clear space equal to the height of the logomark on all sides. Never alter proportions, add effects, or change brand colors.",
+    tagline: "\"People-Centered AI Solutions for the Real World\" — always in that exact format. Short version: \"People-First AI. Real Results.\" Both are approved for use.",
     attribution: "Always attribute: \"Part of The Master's Edge Business Program by Total Success AI\"",
   });
 
   const [usageGuidelines, setUsageGuidelines] = useState({
-    social: "Post in brand voice. Use brand hashtags (max 5 per post). Always include CTA. Respond to comments within 4 hours during business hours.",
-    email: "Use email signature template. Subject lines under 50 characters. One CTA per email. Preview text should complement (not repeat) subject.",
-    boilerplate50: "Total Success AI builds AI-powered automation systems for small businesses. Using Go High Level, we turn repetitive tasks into automated workflows — so business owners can focus on growth.",
-    boilerplate100: "Total Success AI was founded by Brett Lechtenberg and Manny Torres with a simple belief: business owners should spend their time on strategy and relationships, not busywork. We build intelligent automation systems purpose-built for Go High Level that handle follow-ups, scheduling, reporting, and operations automatically. Our Master's Edge Business Program provides 15 complete systems — from hiring and delegation to competitive intelligence and financial modeling — that transform how small businesses operate. We automate the grind so entrepreneurs can elevate the human.",
+    social: "Post in brand voice (warm, confident, encouraging). Use 3-5 branded hashtags per post. Lead with value, not sales. Respond authentically within business hours.",
+    email: "Professional yet warm. Clear subject lines under 50 characters. One clear CTA per email. Sign off personally. Use the approved boilerplate in footers.",
+    boilerplate50: "Total Success AI provides people-centered AI consulting, implementation, and training for businesses. We partner with organizations to empower individuals, strengthen teams, and drive lasting business success — because AI should make work more human, not less.",
+    boilerplate100: "Total Success AI was founded by Brett Lechtenberg and Manny Torres with a belief that AI and humanity aren't at odds. We partner with businesses through strategic consulting, hands-on implementation, and practical training — working until every individual is confident, every team is elevated, and the business thrives. Through The Master's Edge Business Program, we deliver 15 integrated business systems covering everything from brand identity to competitive intelligence. Our people-first approach ensures technology empowers individuals, strengthens teams, and creates lasting success. Because when you put people at the center, everyone wins.",
   });
 
   const handleSave = () => {

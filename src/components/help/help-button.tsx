@@ -25,7 +25,7 @@ import {
 const steps = [
   {
     icon: BookOpen,
-    color: "from-violet-500 to-purple-500",
+    color: "from-blue-500 to-blue-500",
     title: "Step 1: Brand Foundation",
     subtitle: "Define who you are",
     description:
@@ -98,7 +98,7 @@ export function HelpButton() {
         <DialogContent className="max-w-2xl max-h-[85vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-600 flex items-center justify-center">
                 <BookOpen className="w-4 h-4 text-white" />
               </div>
               Brand Book Creator Guide
@@ -140,10 +140,10 @@ export function HelpButton() {
             ))}
 
             {/* Cross-app integration note */}
-            <div className="rounded-lg border-2 border-dashed border-violet-200 dark:border-violet-800 p-4 space-y-2">
+            <div className="rounded-lg border-2 border-dashed border-blue-200 dark:border-blue-800 p-4 space-y-2">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-violet-500" />
-                <h3 className="font-semibold text-violet-900 dark:text-violet-100">
+                <CheckCircle2 className="h-5 w-5 text-blue-500" />
+                <h3 className="font-semibold text-blue-900 dark:text-blue-100">
                   Connects to Your Other Apps
                 </h3>
               </div>

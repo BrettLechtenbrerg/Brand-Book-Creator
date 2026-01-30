@@ -24,7 +24,7 @@ import {
 const sections = [
   {
     icon: Building2,
-    color: "from-violet-600 to-purple-600",
+    color: "from-blue-600 to-blue-600",
     title: "1. Brand Foundation",
     time: "30 min",
     description: "Start here. Define your business name, tagline, purpose, vision, mission, and positioning statement. This is the bedrock everything else builds on.",
@@ -108,7 +108,7 @@ export default function GuidePage() {
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-violet-600 to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-blue-600 flex items-center justify-center">
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             Admin Guide
@@ -119,10 +119,10 @@ export default function GuidePage() {
         </div>
 
         {/* Overview */}
-        <Card className="border-violet-200 dark:border-violet-800">
+        <Card className="border-blue-200 dark:border-blue-800">
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-violet-500" />
+              <Sparkles className="h-5 w-5 text-blue-500" />
               What is the Brand Book Creator?
             </CardTitle>
           </CardHeader>
@@ -131,18 +131,18 @@ export default function GuidePage() {
               The Brand Book Creator helps you define the complete DNA of your business across <strong>15 essential brand elements</strong> organized into 6 sections. When complete, you&apos;ll have a professional brand identity document that ensures consistency across all marketing, hiring, operations, and customer interactions.
             </p>
             <div className="grid gap-3 md:grid-cols-3">
-              <div className="rounded-lg bg-violet-50 dark:bg-violet-950/30 p-4 text-center">
-                <Clock className="h-6 w-6 text-violet-500 mx-auto" />
+              <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 p-4 text-center">
+                <Clock className="h-6 w-6 text-blue-500 mx-auto" />
                 <p className="text-2xl font-bold mt-2">~4 hours</p>
                 <p className="text-xs text-muted-foreground">Total build time</p>
               </div>
-              <div className="rounded-lg bg-violet-50 dark:bg-violet-950/30 p-4 text-center">
-                <Target className="h-6 w-6 text-violet-500 mx-auto" />
+              <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 p-4 text-center">
+                <Target className="h-6 w-6 text-blue-500 mx-auto" />
                 <p className="text-2xl font-bold mt-2">15</p>
                 <p className="text-xs text-muted-foreground">Brand elements defined</p>
               </div>
-              <div className="rounded-lg bg-violet-50 dark:bg-violet-950/30 p-4 text-center">
-                <CheckCircle2 className="h-6 w-6 text-violet-500 mx-auto" />
+              <div className="rounded-lg bg-blue-50 dark:bg-blue-950/30 p-4 text-center">
+                <CheckCircle2 className="h-6 w-6 text-blue-500 mx-auto" />
                 <p className="text-2xl font-bold mt-2">6</p>
                 <p className="text-xs text-muted-foreground">Sections to complete</p>
               </div>
@@ -195,7 +195,7 @@ export default function GuidePage() {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Settings className="h-5 w-5 text-violet-500" />
+              <Settings className="h-5 w-5 text-blue-500" />
               Go High Level Setup
             </CardTitle>
             <CardDescription>
@@ -212,7 +212,7 @@ export default function GuidePage() {
                 "Verify data appears in GHL contact records",
               ].map((step, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center shrink-0 text-xs font-bold text-violet-600">
+                  <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center shrink-0 text-xs font-bold text-blue-600">
                     {i + 1}
                   </div>
                   <p className="text-sm">{step}</p>
@@ -223,12 +223,12 @@ export default function GuidePage() {
         </Card>
 
         {/* Footer */}
-        <Card className="bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-950/30 dark:to-purple-950/30">
+        <Card className="bg-gradient-to-br from-blue-50 to-blue-50 dark:from-blue-950/30 dark:to-blue-950/30">
           <CardContent className="py-6 text-center space-y-2">
-            <p className="text-sm font-medium text-violet-900 dark:text-violet-100">
+            <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
               Part of The Master&apos;s Edge Business Program
             </p>
-            <p className="text-xs text-violet-600 dark:text-violet-400">
+            <p className="text-xs text-blue-600 dark:text-blue-400">
               by Total Success AI — &ldquo;Automate the grind. Elevate the human.&rdquo;
             </p>
           </CardContent>

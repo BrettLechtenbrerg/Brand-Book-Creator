@@ -80,7 +80,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Webhook className="h-5 w-5 text-violet-500" />
+                  <Webhook className="h-5 w-5 text-blue-500" />
                   Webhook Configuration
                 </CardTitle>
                 <CardDescription>
@@ -115,9 +115,9 @@ export default function SettingsPage() {
                   />
                 </div>
 
-                <div className="flex items-start gap-2 rounded-md bg-violet-50 dark:bg-violet-950/30 p-4">
-                  <Lightbulb className="h-4 w-4 text-violet-500 mt-0.5 shrink-0" />
-                  <div className="text-xs text-violet-800 dark:text-violet-200 space-y-2">
+                <div className="flex items-start gap-2 rounded-md bg-blue-50 dark:bg-blue-950/30 p-4">
+                  <Lightbulb className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
+                  <div className="text-xs text-blue-800 dark:text-blue-200 space-y-2">
                     <p className="font-semibold">How to set up in GHL:</p>
                     <ol className="list-decimal ml-4 space-y-1">
                       <li>Go to GHL &rarr; Automation &rarr; Workflows</li>
@@ -138,7 +138,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Database className="h-5 w-5 text-violet-500" />
+                  <Database className="h-5 w-5 text-blue-500" />
                   GHL Custom Fields
                 </CardTitle>
                 <CardDescription>
@@ -177,7 +177,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Link2 className="h-5 w-5 text-violet-500" />
+                  <Link2 className="h-5 w-5 text-blue-500" />
                   Master&apos;s Edge Ecosystem
                 </CardTitle>
                 <CardDescription>
@@ -212,7 +212,7 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Download className="h-5 w-5 text-violet-500" />
+                  <Download className="h-5 w-5 text-blue-500" />
                   Export Brand Book
                 </CardTitle>
                 <CardDescription>
