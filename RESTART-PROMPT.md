@@ -1,9 +1,9 @@
 # ULTIMATE RESTART PROMPT — Master's Edge Companion Apps
 
-> **Last Updated:** January 30, 2026 (7:30 AM MST)
-> **Session:** Brand Book Creator — FULLY COMPLETE with real TSAI data, help modal enhanced, deployed
+> **Last Updated:** January 31, 2026 (6:55 AM MST)
+> **Session:** Brand Book Creator — Shareable Brand Book feature complete with Supabase backend
 > **Status:** Build 1 of 6 COMPLETE. Ready for Build 2 (P&L Creation System).
-> **All work saved:** GitHub pushed, Vercel deployed, no uncommitted changes anywhere.
+> **All work saved:** GitHub pushed (`6a13e8c`), Vercel deployed, Supabase env vars set, no uncommitted changes.
 
 ---
 
@@ -11,7 +11,7 @@
 
 You are helping **Brett Lechtenberg** build **6 companion Next.js web apps** for the **Master's Edge Business Program** by **Total Success AI (TSAI)**. These apps are part of a larger business ecosystem with 15 flagship systems across 3 tiers.
 
-The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED**. The next 5 apps need to be built following the same architecture.
+The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED** with a **shareable brand book feature** (Supabase-backed, password-protected option, PDF download). The next 5 apps need to be built following the same architecture.
 
 **Key rule:** Brett co-founded TSAI with **Manny Torres**. Philosophy: *"People-Centered AI Solutions for the Real World."*
 
@@ -37,16 +37,17 @@ The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED**. The next 5 
 
 ## ALL COMPANION APPS — COMPLETE INVENTORY
 
-### Build 1: Brand Book Creator — COMPLETE
+### Build 1: Brand Book Creator — COMPLETE ✅
 | Item | Value |
 |------|-------|
 | **Local Path** | `/Users/brettlechtenberg/Desktop/Claude Projects/Brand-Book-Creator/` |
 | **GitHub** | `https://github.com/BrettLechtenbrerg/Brand-Book-Creator` |
 | **Vercel URL** | `https://ts-brand-book-creator.vercel.app` |
 | **Vercel Project** | `ts-brand-book-creator` (org: `bretts-projects-3e254e58`) |
-| **Latest Commit** | `a60625c` — feat: add intro section to help modal |
+| **Latest Commit** | `6a13e8c` — feat: add shareable brand book with Supabase storage |
 | **Git Status** | Clean, up to date with origin/main |
 | **Framework** | Next.js 15.5, TypeScript, Tailwind CSS, shadcn/ui, Lucide React |
+| **Backend** | Supabase (PostgreSQL) for brand book storage & sharing |
 
 ### Builds 2-6: NOT STARTED
 | # | App Name | Tier 2 System | Status |
@@ -74,27 +75,46 @@ The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED**. The next 5 
 Brand-Book-Creator/
 ├── src/
 │   ├── app/
-│   │   ├── globals.css          # Navy theme (--primary: 214 49% 34%)
+│   │   ├── globals.css          # Navy theme + @media print CSS for PDF export
 │   │   ├── layout.tsx           # Root layout, Inter font
-│   │   ├── page.tsx             # Dashboard (100% complete, all 6 sections done)
+│   │   ├── page.tsx             # Dashboard (100% complete, Share CTA card)
 │   │   ├── foundation/page.tsx  # Brand foundation (real TSAI data)
 │   │   ├── values/page.tsx      # 7 core values + brand story
 │   │   ├── voice/page.tsx       # Voice, tone shifts, archetype (Sage+Ally)
 │   │   ├── visual/page.tsx      # Navy colors, typography, logo, imagery
 │   │   ├── audience/page.tsx    # 4 personas, 3 pitches, 5 message pillars
 │   │   ├── assets/page.tsx      # Hashtags, keywords, trademark, boilerplate
-│   │   ├── settings/page.tsx    # GHL webhook, custom fields, exports
+│   │   ├── settings/page.tsx    # GHL webhook, custom fields, Share & Export tab
 │   │   ├── guide/page.tsx       # Admin walkthrough
-│   │   └── api/webhooks/ghl/route.ts  # GHL webhook endpoint
+│   │   ├── share/[slug]/
+│   │   │   ├── layout.tsx       # Minimal layout (no sidebar/header)
+│   │   │   └── page.tsx         # Client-side share page (loading → password → loaded)
+│   │   └── api/
+│   │       ├── brand-book/
+│   │       │   ├── route.ts     # GET/POST: Save/load brand book
+│   │       │   └── publish/
+│   │       │       └── route.ts # POST: Publish, PATCH: Update sharing settings
+│   │       ├── share/
+│   │       │   └── route.ts     # GET: Fetch by slug, POST: Verify password
+│   │       └── webhooks/ghl/route.ts  # GHL webhook endpoint
 │   ├── components/
-│   │   ├── sidebar.tsx          # 8 nav items + help section (navy gradient)
+│   │   ├── sidebar.tsx          # 9 nav items including Share & Export
 │   │   ├── header.tsx           # Dark mode toggle, help, user avatar
 │   │   ├── dashboard-layout.tsx # 256px sidebar + sticky header + content
-│   │   ├── help/help-button.tsx # Help modal: intro (why brand books matter) + 6-step guide + cross-app integration
-│   │   └── ui/                  # button, card, dialog, tabs, badge, input,
-│   │                            # textarea, progress, separator
+│   │   ├── PublishPanel.tsx     # Publish/unpublish UI, share link, password toggle
+│   │   ├── help/help-button.tsx # Help modal
+│   │   ├── share/
+│   │   │   ├── ShareableBrandBook.tsx  # ~500 line beautiful read-only brand book
+│   │   │   ├── PasswordGate.tsx        # Password entry screen
+│   │   │   └── PdfDownloadButton.tsx   # Floating PDF download button
+│   │   └── ui/                  # shadcn/ui components
 │   └── lib/
-│       └── utils.ts             # cn(), formatDate(), helper functions
+│       ├── utils.ts             # cn(), formatDate(), helper functions
+│       ├── brand-types.ts       # TypeScript interfaces for all brand data
+│       ├── brand-defaults.ts    # Complete TSAI demo data (DEFAULT_BRAND_DATA)
+│       └── supabase.ts          # Lazy-initialized Supabase client (Proxy pattern)
+├── .env.local                   # Supabase URL + anon key (gitignored)
+├── .env.local.example           # Template for env vars
 ├── RESTART-PROMPT.md            # THIS FILE
 ├── package.json
 ├── tsconfig.json
@@ -103,6 +123,50 @@ Brand-Book-Creator/
 ├── postcss.config.mjs
 ├── eslint.config.mjs
 └── .gitignore
+```
+
+### Supabase Configuration
+| Item | Value |
+|------|-------|
+| **Project Name** | Brand Book |
+| **Project Ref** | `yqdamzadvwcicgfaydfi` |
+| **Supabase URL** | `https://yqdamzadvwcicgfaydfi.supabase.co` |
+| **Dashboard** | `https://supabase.com/dashboard/project/yqdamzadvwcicgfaydfi` |
+| **Database Password** | `BrandBookTSAI` |
+| **Anon Key** | Stored in `.env.local` and Vercel env vars (JWT format `eyJ...`) |
+| **Table** | `brand_books` |
+| **RLS** | Enabled with "Allow all operations" policy (MVP, no auth yet) |
+
+### Database Schema (`brand_books` table)
+```sql
+id                    uuid        (PK, auto-generated)
+slug                  text        (unique, for share URLs)
+data                  jsonb       (entire brand book data as one document)
+is_published          boolean     (default false)
+is_password_protected boolean     (default false)
+share_password        text        (nullable, plain text for MVP)
+company_name          text        (for display)
+created_at            timestamptz (auto)
+updated_at            timestamptz (auto)
+```
+Index: `idx_brand_books_slug` on `slug` column.
+
+### Shareable Brand Book Feature (Session 4)
+The complete publish → share → PDF flow:
+1. **Publish**: Settings → Share & Export → "Publish Brand Book" button
+2. **Data**: Sends `DEFAULT_BRAND_DATA` to Supabase via `/api/brand-book/publish`
+3. **Slug**: Auto-generated from company name + timestamp (`total-success-ai-tsai-ml2dfjlm`)
+4. **Share URL**: `https://ts-brand-book-creator.vercel.app/share/[slug]`
+5. **Access Control**: Toggle between Public (anyone with link) or Password-Protected
+6. **Password Gate**: Shows password form, verifies via `POST /api/share`, stores auth in sessionStorage
+7. **Brand Book Page**: Beautiful standalone page with cover, TOC, all 6 sections, footer
+8. **Dynamic Theming**: Uses brand's own primary color as accent throughout
+9. **PDF Download**: Floating button (bottom-right), uses `window.print()` with `@media print` CSS
+
+### Vercel Environment Variables
+```
+NEXT_PUBLIC_SUPABASE_URL     → production + preview
+NEXT_PUBLIC_SUPABASE_ANON_KEY → production + preview
 ```
 
 ### Help Modal Structure (help-button.tsx)
@@ -148,6 +212,7 @@ The help modal has this flow:
   --ring: 214 60% 55%;
 }
 ```
+Plus `@media print` styles for PDF export (page breaks, color fidelity, hidden interactive elements).
 
 ---
 
@@ -160,7 +225,7 @@ All companion apps follow the same pattern:
 3. **Components:** shadcn/ui pattern with Radix primitives + class-variance-authority
 4. **Layout:** 256px fixed sidebar + sticky header + scrollable content
 5. **Icons:** Lucide React
-6. **Backend:** GHL webhook endpoints for data sync
+6. **Backend:** Supabase for data persistence + GHL webhook endpoints for data sync
 7. **Deployment:** GitHub repo → Vercel production
 8. **Naming:** `ts-[app-name]` for Vercel projects
 9. **GitHub org:** `BrettLechtenbrerg` (note the spelling)
@@ -249,6 +314,8 @@ git push origin main
 - GitHub username is `BrettLechtenbrerg` (note the spelling)
 - Performance Review Pro local folder has spaces: `Performance Review Pro` (use quotes in commands)
 - Vercel org ID: `team_TP2l0A1jczMx76uLuijabKp3`
+- Supabase anon key is in legacy JWT format (`eyJ...`), NOT the newer `sb_publishable_` format
+- Supabase RLS policy is permissive (MVP) — needs auth added in future
 
 ---
 
@@ -270,6 +337,8 @@ git push origin main
 ## COMPLETE GIT HISTORY — Brand Book Creator
 
 ```
+6a13e8c feat: add shareable brand book with Supabase storage
+451bcb2 docs: update RESTART-PROMPT.md with complete asset inventory and session 3 history
 a60625c feat: add intro section to help modal — why brand books matter + relatable example
 22784a6 docs: add ultimate restart prompt for session continuity
 ad91251 feat: populate all sections with real TSAI brand data + navy theme
@@ -282,7 +351,16 @@ ad91251 feat: populate all sections with real TSAI brand data + navy theme
 
 1. **Session 1:** Built Brand Book Creator from scratch (scaffold, all pages, UI components, deploy)
 2. **Session 2:** Populated all 6 sections with real TSAI brand data from PDF, migrated theme from violet to navy, committed, pushed, deployed
-3. **Session 3 (Jan 30, 2026):** Enhanced help modal with intro section (why brand books matter, relatable example, what the tool does). Complete audit of all repos — fixed Performance Review Pro git linkage, restored competitor-intel layout.tsx, committed Masters Edge stray file. All repos verified clean and pushed. Generated this ultimate restart prompt.
+3. **Session 3 (Jan 30, 2026):** Enhanced help modal with intro section (why brand books matter, relatable example, what the tool does). Complete audit of all repos — fixed Performance Review Pro git linkage, restored competitor-intel layout.tsx, committed Masters Edge stray file. All repos verified clean and pushed. Generated restart prompt.
+4. **Session 4 (Jan 31, 2026):** Built complete shareable brand book feature:
+   - Added Supabase (PostgreSQL) backend for persistent storage
+   - Created `brand_books` table with JSONB data, slug-based URLs, password protection
+   - Built 12 new files: types, defaults, supabase client, 3 API routes, share page, 4 components
+   - Modified 6 files: dashboard CTA, sidebar nav, settings tab, globals.css print styles
+   - Set up Supabase project (`yqdamzadvwcicgfaydfi`), configured env vars locally + Vercel
+   - End-to-end tested: publish, share API, password protection, wrong password rejection
+   - Deployed to Vercel production with Supabase env vars
+   - All committed and pushed to GitHub (`6a13e8c`)
 
 ---
 
@@ -301,9 +379,23 @@ ad91251 feat: populate all sections with real TSAI brand data + navy theme
 
 ## VERCEL DEPLOYMENTS
 
-| App | Vercel URL | Status |
-|-----|-----------|--------|
-| Brand Book Creator | `ts-brand-book-creator.vercel.app` | 200 OK |
-| CEO Dashboard | `ceo-dashboard.vercel.app` | 200 OK |
-| Refferq | `refferq-referral-engine.vercel.app` | Live (auth redirect) |
-| Competitor Intel | `competitor-intel.vercel.app` | Live (auth redirect) |
+| App | Vercel URL | Env Vars | Status |
+|-----|-----------|----------|--------|
+| Brand Book Creator | `ts-brand-book-creator.vercel.app` | SUPABASE_URL + ANON_KEY (prod + preview) | 200 OK |
+| CEO Dashboard | `ceo-dashboard.vercel.app` | — | 200 OK |
+| Refferq | `refferq-referral-engine.vercel.app` | — | Live (auth redirect) |
+| Competitor Intel | `competitor-intel.vercel.app` | — | Live (auth redirect) |
+
+---
+
+## PHASE 2 IDEAS (Future Enhancements)
+
+These were discussed but NOT built yet:
+- Wire up individual section "Save" buttons to persist to Supabase (replace hardcoded useState)
+- User authentication (Supabase Auth or Clerk)
+- Custom domains for share pages
+- Markdown export
+- GHL JSON push (export brand data to GHL custom fields)
+- Version history for brand books
+- Hash passwords instead of storing plain text
+- Multiple brand books per account
