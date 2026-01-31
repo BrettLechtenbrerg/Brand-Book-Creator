@@ -12,6 +12,7 @@ import {
   Palette,
   Users,
   Hash,
+  Share2,
   Settings,
   HelpCircle,
 } from "lucide-react";
@@ -24,6 +25,7 @@ const navigation = [
   { name: "Visual Identity", href: "/visual", icon: Palette },
   { name: "Audience & Messaging", href: "/audience", icon: Users },
   { name: "Brand Assets", href: "/assets", icon: Hash },
+  { name: "Share & Export", href: "/settings?tab=export", icon: Share2 },
   { name: "Settings", href: "/settings", icon: Settings },
 ];
 

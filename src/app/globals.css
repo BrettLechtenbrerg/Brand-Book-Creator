@@ -96,3 +96,53 @@ body {
 .section-complete {
   animation: checkmark 0.4s ease-out;
 }
+
+/* ─── Print / PDF Styles ─────────────────────────────────── */
+@media print {
+  /* Hide interactive elements */
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* Reset backgrounds and colors for print */
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Page break control */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+  }
+
+  .page-break:first-of-type {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  /* Ensure color swatches print correctly */
+  [style*="background-color"] {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Page setup */
+  @page {
+    margin: 1cm 1.5cm;
+    size: A4;
+  }
+
+  /* Keep cards together when possible */
+  .rounded-xl {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Ensure links are visible in print */
+  a {
+    text-decoration: none !important;
+  }
+}

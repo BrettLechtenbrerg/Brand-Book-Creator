@@ -19,6 +19,8 @@ import {
   Target,
   BookOpen,
   TrendingUp,
+  Share2,
+  Globe,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -185,6 +187,29 @@ export default function DashboardPage() {
               <span className="text-muted-foreground">{completedCount} of {totalCount} sections</span>
             </div>
             <Progress value={completionPercentage} />
+          </CardContent>
+        </Card>
+
+        {/* Share Brand Book CTA */}
+        <Card className="border-blue-200 dark:border-blue-800 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
+          <CardContent className="flex items-center justify-between p-6">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center">
+                <Globe className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">Share Your Brand Book</h3>
+                <p className="text-sm text-muted-foreground">
+                  Publish as a shareable webpage with a downloadable PDF. Perfect for agencies, teams, and partners.
+                </p>
+              </div>
+            </div>
+            <Link href="/settings?tab=export">
+              <Button className="gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500">
+                <Share2 className="w-4 h-4" />
+                Share & Export
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 

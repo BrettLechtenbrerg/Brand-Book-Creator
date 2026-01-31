@@ -16,11 +16,12 @@ import {
   ExternalLink,
   Webhook,
   Database,
-  Download,
+  Share2,
   Lightbulb,
   Link2,
   ArrowRight,
 } from "lucide-react";
+import { PublishPanel } from "@/components/PublishPanel";
 
 const ghlCustomFields = [
   { name: "brand_name", label: "Brand Name", description: "Official business name", synced: true },
@@ -72,7 +73,7 @@ export default function SettingsPage() {
             <TabsTrigger value="ghl">Go High Level</TabsTrigger>
             <TabsTrigger value="fields">Custom Fields</TabsTrigger>
             <TabsTrigger value="apps">Connected Apps</TabsTrigger>
-            <TabsTrigger value="export">Export</TabsTrigger>
+            <TabsTrigger value="export">Share & Export</TabsTrigger>
           </TabsList>
 
           {/* GHL Integration Tab */}
@@ -207,37 +208,20 @@ export default function SettingsPage() {
             </Card>
           </TabsContent>
 
-          {/* Export Tab */}
+          {/* Share & Export Tab */}
           <TabsContent value="export" className="space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg flex items-center gap-2">
-                  <Download className="h-5 w-5 text-blue-500" />
-                  Export Brand Book
+                  <Share2 className="h-5 w-5 text-blue-500" />
+                  Share Brand Book
                 </CardTitle>
                 <CardDescription>
-                  Download your complete brand book in various formats.
+                  Publish your brand book as a shareable webpage. Share the link with your marketing team, agencies, or anyone who needs access.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Button variant="outline" className="h-auto p-4 flex flex-col items-start gap-2">
-                    <span className="font-semibold">Export as PDF</span>
-                    <span className="text-xs text-muted-foreground text-left">Full brand book formatted for printing and sharing.</span>
-                  </Button>
-                  <Button variant="outline" className="h-auto p-4 flex flex-col items-start gap-2">
-                    <span className="font-semibold">Export as Markdown</span>
-                    <span className="text-xs text-muted-foreground text-left">For documentation, GitHub, or CMS integration.</span>
-                  </Button>
-                  <Button variant="outline" className="h-auto p-4 flex flex-col items-start gap-2">
-                    <span className="font-semibold">Export for GHL</span>
-                    <span className="text-xs text-muted-foreground text-left">JSON format ready to import as GHL custom values.</span>
-                  </Button>
-                  <Button variant="outline" className="h-auto p-4 flex flex-col items-start gap-2">
-                    <span className="font-semibold">Copy Quick Reference</span>
-                    <span className="text-xs text-muted-foreground text-left">One-page summary for your team to reference daily.</span>
-                  </Button>
-                </div>
+              <CardContent>
+                <PublishPanel />
               </CardContent>
             </Card>
           </TabsContent>
