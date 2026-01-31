@@ -1,9 +1,9 @@
 # ULTIMATE RESTART PROMPT — Master's Edge Companion Apps
 
-> **Last Updated:** January 31, 2026 (6:55 AM MST)
-> **Session:** Brand Book Creator — Shareable Brand Book feature complete with Supabase backend
-> **Status:** Build 1 of 6 COMPLETE. Ready for Build 2 (P&L Creation System).
-> **All work saved:** GitHub pushed (`6a13e8c`), Vercel deployed, Supabase env vars set, no uncommitted changes.
+> **Last Updated:** January 31, 2026 (8:15 AM MST)
+> **Session:** P&L Creation System — Build 2 COMPLETE with Excel export, 3 scenarios, GHL integration
+> **Status:** Build 2 of 6 COMPLETE. Ready for Build 3 (Delegation Engine).
+> **All work saved:** GitHub pushed (`c130e15`), Vercel deployed, no uncommitted changes.
 
 ---
 
@@ -11,7 +11,11 @@
 
 You are helping **Brett Lechtenberg** build **6 companion Next.js web apps** for the **Master's Edge Business Program** by **Total Success AI (TSAI)**. These apps are part of a larger business ecosystem with 15 flagship systems across 3 tiers.
 
-The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED** with a **shareable brand book feature** (Supabase-backed, password-protected option, PDF download). The next 5 apps need to be built following the same architecture.
+The **first two apps** are **COMPLETE and DEPLOYED**:
+- **Brand Book Creator** — Supabase-backed shareable brand books, password protection, PDF download
+- **P&L Creation System** — Interactive 3-year financial projections, 3 growth scenarios, Excel export with real formulas
+
+The next 4 apps need to be built following the same architecture.
 
 **Key rule:** Brett co-founded TSAI with **Manny Torres**. Philosophy: *"People-Centered AI Solutions for the Real World."*
 
@@ -49,10 +53,21 @@ The **first app (Brand Book Creator)** is **COMPLETE and DEPLOYED** with a **sha
 | **Framework** | Next.js 15.5, TypeScript, Tailwind CSS, shadcn/ui, Lucide React |
 | **Backend** | Supabase (PostgreSQL) for brand book storage & sharing |
 
-### Builds 2-6: NOT STARTED
+### Build 2: P&L Creation System — COMPLETE ✅
+| Item | Value |
+|------|-------|
+| **Local Path** | `/Users/brettlechtenberg/Desktop/Claude Projects/p-l-creation-system/` |
+| **GitHub** | `https://github.com/BrettLechtenbrerg/P-L-Creation-System` |
+| **Vercel URL** | `https://p-l-creation-system.vercel.app` |
+| **Vercel Project** | `p-l-creation-system` (org: `bretts-projects-3e254e58`) |
+| **Latest Commit** | `c130e15` — feat: Complete P&L Creation System - Build 2 of Masters Edge |
+| **Git Status** | Clean, up to date with origin/main |
+| **Framework** | Next.js 16.1.6, TypeScript, Tailwind CSS v4, shadcn/ui, Lucide React, ExcelJS |
+| **State Management** | React Context + localStorage (PLProvider) |
+
+### Builds 3-6: NOT STARTED
 | # | App Name | Tier 2 System | Status |
 |---|----------|---------------|--------|
-| 2 | **P&L Creation System** | Financial Foundation | NOT STARTED |
 | 3 | **Delegation Engine** | Operational Foundation | NOT STARTED |
 | 4 | **SOP Factory** | SOP & Process System | NOT STARTED |
 | 5 | **Hiring Oracle** | Hiring System | NOT STARTED |
@@ -216,6 +231,87 @@ Plus `@media print` styles for PDF export (page breaks, color fidelity, hidden i
 
 ---
 
+## BUILD 2 DETAIL: P&L CREATION SYSTEM
+
+### Project Structure
+```
+p-l-creation-system/
+├── src/
+│   ├── app/
+│   │   ├── globals.css            # Navy theme CSS vars (HSL), scrollbar, print styles
+│   │   ├── layout.tsx             # Root layout with PLProvider
+│   │   ├── page.tsx               # Dashboard (key metrics, year-over-year cards)
+│   │   ├── setup/page.tsx         # Company name, start date, revenue streams, expense categories
+│   │   ├── assumptions/page.tsx   # Pricing tables, expenses, starting values, churn rate
+│   │   ├── scenarios/page.tsx     # 3-tab scenario editor (Conservative/Moderate/Aggressive)
+│   │   ├── comparison/page.tsx    # Side-by-side scenario comparison
+│   │   └── settings/page.tsx      # GHL webhook, Excel/PDF export, share settings
+│   ├── components/
+│   │   ├── sidebar.tsx            # 256px fixed sidebar, nav links, company name from context
+│   │   ├── header.tsx             # Sticky header with dark mode toggle
+│   │   ├── dashboard-layout.tsx   # Sidebar + header + content wrapper
+│   │   └── ui/                    # 15 shadcn/ui components
+│   └── lib/
+│       ├── pl-types.ts            # PLModel, RevenueStream, ExpenseCategory, ScenarioData, etc.
+│       ├── pl-calculations.ts     # Calculation engine (36-month projections, churn, revenue)
+│       ├── pl-defaults.ts         # TSAI demo data (16 revenue streams, 5 expense categories)
+│       ├── pl-excel-export.ts     # ExcelJS export with REAL cascading formulas
+│       ├── pl-context.tsx         # React Context + localStorage (PLProvider, usePL hook)
+│       └── utils.ts               # cn() utility
+├── package.json
+├── next.config.ts
+├── components.json                # shadcn/ui config
+└── .gitignore
+```
+
+### Core Data Model (`PLModel`)
+```typescript
+interface PLModel {
+  companyName: string;
+  startDate: string;                    // "2025-01"
+  revenueStreams: RevenueStream[];      // flat array, type: "one-time" | "recurring"
+  expenseCategories: ExpenseCategory[]; // each has items: ExpenseItem[]
+  startingValues: StartingValue[];      // {streamId, count} for recurring streams
+  monthlyChurnRate: number;             // e.g. 0.05 = 5%
+  scenarios: {
+    conservative: ScenarioData;         // {clientAcquisition: Record<streamId, number[36]>}
+    moderate: ScenarioData;
+    aggressive: ScenarioData;
+  };
+}
+```
+
+### Key Features
+1. **Dashboard** — Year 1 revenue, net income, 3-year totals from moderate scenario
+2. **Setup** — Add/remove revenue streams (one-time or recurring), expense categories with line items
+3. **Assumptions** — View all pricing, expenses, starting values, churn rate (editable)
+4. **Scenarios** — Interactive monthly grid: edit client acquisition per stream, auto-calculates everything
+5. **Comparison** — Side-by-side Conservative vs Moderate vs Aggressive (3-year totals, profitability)
+6. **Excel Export** — 8-sheet workbook with REAL Excel formulas:
+   - Assumptions sheet (all pricing, expenses, starting values)
+   - 12-Month Conservative/Moderate/Aggressive
+   - 36-Month Conservative/Moderate/Aggressive
+   - Scenario Comparison (cross-sheet formula references)
+   - Yellow-highlighted editable cells
+7. **GHL Integration** — Webhook URL, API key, custom field mapping in Settings
+8. **PDF Export** — `window.print()` with `@media print` CSS
+9. **State Persistence** — localStorage auto-save via PLProvider context
+
+### Reference Files (Original P&L Format)
+```
+/Users/brettlechtenberg/Desktop/TSAI-TSBS Master File/TSAI P&L/
+├── TSAI - P&L Prompt.pdf                           # 3-page master prompt
+├── PandL_Prompt_Instructions.txt                    # Cascading formula instructions
+└── Freds_Auto_Body_3Year_Financial_Model.xlsx       # Example 7-sheet Excel
+```
+
+### TSAI Demo Data (Pre-loaded)
+- **16 Revenue Streams:** Consulting ($500/hr), Website Builds ($2,500), AI Voice Agents ($1,499/mo), SEO ($1,200/mo), Social Media ($900/mo), AI Training ($2,000/session), etc.
+- **5 Expense Categories:** Salaries (CEO/COO $10K/mo each, AI Engineer $8K, Sales Rep $5K), Software (GHL $297, OpenAI $200, Hosting $150, etc.), Marketing ($2K/mo), Office ($1.5K/mo), Professional Services ($500/mo)
+- **3 Scenarios:** Conservative/Moderate/Aggressive with different client acquisition rates per month
+
+---
+
 ## ARCHITECTURE PATTERN (For Building Remaining Apps)
 
 All companion apps follow the same pattern:
@@ -248,17 +344,18 @@ All companion apps follow the same pattern:
 
 ## WHAT TO DO NEXT
 
-The immediate next task is **Build 2: P&L Creation System** — a companion app for the Financial Foundation system.
+The immediate next task is **Build 3: Delegation Engine** — a companion app for the Operational Foundation system.
 
 ### To build it:
-1. Read the system documentation at `/Users/brettlechtenberg/Desktop/Claude Projects/Masters Edge Business Program/12-PL-Creation-System/`
-2. Follow the same architecture pattern as Brand Book Creator
-3. Create the project at `/Users/brettlechtenberg/Desktop/Claude Projects/P-L-Creation-System/` (or similar)
+1. Read the system documentation at `/Users/brettlechtenberg/Desktop/Claude Projects/Masters Edge Business Program/07-Delegation-Engine/`
+2. Follow the same architecture pattern as Brand Book Creator and P&L Creation System
+3. Create the project at `/Users/brettlechtenberg/Desktop/Claude Projects/Delegation-Engine/` (or similar)
 4. GitHub repo under `BrettLechtenbrerg` org
-5. Deploy to Vercel as `ts-p-l-creation-system`
+5. Deploy to Vercel
 
 ### Build Order Rationale
-- **P&L Creation System (Build 2):** Financial reality — budgets feed into SOP Factory and Hiring Oracle
+- **Brand Book Creator (Build 1):** DONE ✅ — Brand identity, voice, values
+- **P&L Creation System (Build 2):** DONE ✅ — Financial projections, budgets
 - **Delegation Engine (Build 3):** Task identification — which tasks to delegate feeds into SOPs
 - **SOP Factory (Build 4):** THE GHL hub — consumes brand voice + delegation data, creates procedures
 - **Hiring Oracle (Build 5):** Uses brand values from Brand Book + financial data from P&L
@@ -267,12 +364,12 @@ The immediate next task is **Build 2: P&L Creation System** — a companion app 
 ### System Documentation Folders
 ```
 /Users/brettlechtenberg/Desktop/Claude Projects/Masters Edge Business Program/
-├── 07-Delegation-Engine/        # Build 3
-├── 08-SOP-Factory/              # Build 4
+├── 07-Delegation-Engine/              # Build 3 (NEXT)
+├── 08-SOP-Factory/                    # Build 4
 ├── 09-Difficult-Conversations-Coach/  # Build 6
-├── 10-Hiring-Oracle/            # Build 5
-├── 11-Brand-Book-Creator/       # Build 1 (DONE)
-├── 12-PL-Creation-System/       # Build 2 (NEXT)
+├── 10-Hiring-Oracle/                  # Build 5
+├── 11-Brand-Book-Creator/             # Build 1 (DONE)
+├── 12-PL-Creation-System/             # Build 2 (DONE)
 ```
 
 ---
@@ -361,6 +458,16 @@ ad91251 feat: populate all sections with real TSAI brand data + navy theme
    - End-to-end tested: publish, share API, password protection, wrong password rejection
    - Deployed to Vercel production with Supabase env vars
    - All committed and pushed to GitHub (`6a13e8c`)
+5. **Session 5 (Jan 31, 2026):** Built complete P&L Creation System (Build 2):
+   - Scaffolded new Next.js 16.1.6 project with Tailwind v4, shadcn/ui (15 components), ExcelJS
+   - Created PLModel data type with flat revenue streams, expense categories, 3 scenario types
+   - Built calculation engine with 36-month cascading projections (churn, revenue, expenses, net income)
+   - Built 6 pages: Dashboard, Setup, Assumptions, Scenarios (interactive grids), Comparison, Settings
+   - Created Excel export (625 lines) with REAL formulas: cross-sheet references, SUM(), cascading calcs
+   - Pre-loaded TSAI demo data: 16 revenue streams, 5 expense categories, 3 growth scenarios
+   - Fixed Tailwind v4 incompatibilities (@apply → raw CSS), type mismatches in agent-written files
+   - Clean production build, all 6 routes rendering 200 OK
+   - Pushed to GitHub (`c130e15`), deployed to Vercel (`p-l-creation-system.vercel.app`)
 
 ---
 
@@ -370,6 +477,7 @@ ad91251 feat: populate all sections with real TSAI brand data + navy theme
 |------|-----|--------|
 | Masters Edge Business Program | `https://github.com/BrettLechtenbrerg/Masters-Edge-Business-Program` | Clean |
 | Brand Book Creator | `https://github.com/BrettLechtenbrerg/Brand-Book-Creator` | Clean |
+| P&L Creation System | `https://github.com/BrettLechtenbrerg/P-L-Creation-System` | Clean |
 | CEO Dashboard | `https://github.com/BrettLechtenbrerg/CEO-Dashboard` | Clean |
 | Refferq Referral Engine | `https://github.com/BrettLechtenbrerg/Refferq-Referral-Engine` | Clean |
 | Competitor Intel | `https://github.com/BrettLechtenbrerg/Competitor-Intel` | Clean |
@@ -382,6 +490,7 @@ ad91251 feat: populate all sections with real TSAI brand data + navy theme
 | App | Vercel URL | Env Vars | Status |
 |-----|-----------|----------|--------|
 | Brand Book Creator | `ts-brand-book-creator.vercel.app` | SUPABASE_URL + ANON_KEY (prod + preview) | 200 OK |
+| P&L Creation System | `p-l-creation-system.vercel.app` | — | 200 OK |
 | CEO Dashboard | `ceo-dashboard.vercel.app` | — | 200 OK |
 | Refferq | `refferq-referral-engine.vercel.app` | — | Live (auth redirect) |
 | Competitor Intel | `competitor-intel.vercel.app` | — | Live (auth redirect) |
